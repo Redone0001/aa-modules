@@ -1,0 +1,274 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jakaja · Alliance Auth Modules</title><meta name="description" content="Jakaja Cain’s Alliance Auth modules and forks. Git installation, local.py, Celery schedules and deployment commands in one developer field guide."><link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230e1823'/%3E%3Cpath d='M9 8h14v12q0 7-8 7H9v-5h6q3 0 3-3v-6H9z' fill='%239decac'/%3E%3C/svg%3E"><style>*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5f7f8;color:#162532;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:1.6}a{color:inherit;text-underline-offset:4px}header{height:88px;border-bottom:1px solid #d4dce1;display:flex;align-items:center;justify-content:space-between;max-width:1280px;margin:auto;padding:0 40px}.brand{display:flex;align-items:center;gap:16px;text-decoration:none;font-weight:800;font-size:24px}.brand span{font-size:13px;letter-spacing:2px}nav{display:flex;gap:28px;font-size:14px}main{max-width:1280px;margin:auto;padding:0 40px}.intro{display:flex;justify-content:space-between;gap:40px;padding:32px 0 28px}.eyebrow{font:12px monospace;letter-spacing:2px;color:#506775;margin:0 0 22px}h1{font-size:clamp(32px,4vw,48px);line-height:1.06;letter-spacing:-2.5px;margin:0 0 24px;font-weight:750}.lede{color:#536673;line-height:1.7;margin:0}.intro aside{align-self:center;display:flex;flex-direction:column;align-items:center;min-width:230px;border-left:1px solid #ccd6dc;font:12px monospace;letter-spacing:1px}.big{font:bold 62px/1.2 Arial;letter-spacing:-7px}.stamp{margin-top:22px;padding:8px 13px;background:#d4f5dc;color:#264f33;transform:rotate(-3deg);font-size:11px}.before{background:#e8edf0;border-left:3px solid #243e51;padding:20px 24px;display:grid;grid-template-columns:150px 1fr;gap:4px 20px;font-size:14px;color:#3e5564}.label{font:12px monospace;font-weight:bold;letter-spacing:1px;padding-top:5px;grid-row:span 2}.before p{margin:0 0 8px}.section-line{display:flex;justify-content:space-between;align-items:center;margin:42px 0 20px}.section-line h2{font-size:20px;margin:0}.section-line>span{font-size:13px;color:#647884}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}article{background:white;border:1px solid #d4dce1;border-radius:3px;scroll-margin-top:24px}summary{cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}article>details>summary{display:flex;gap:18px;padding:26px;min-height:213px}.num{font:13px monospace;color:#7c909e;padding-top:2px}.summary{flex:1;min-width:0}.tags{font:11px monospace;color:#6b7e89;letter-spacing:1px;display:flex;flex-wrap:wrap;gap:8px}.tags b{font-weight:normal;letter-spacing:0;background:#eef2f4;padding:0 6px;color:#3b5767}h2{line-height:1.2}.summary h2{font-size:23px;letter-spacing:-.5px;margin:14px 0 9px}.desc{display:block;font-size:15px;color:#60717c;line-height:1.5;max-width:360px}.compat{display:inline-block;font:12px monospace;color:#325c43;margin-top:18px}.plus{font-size:25px;font-weight:300;line-height:1;color:#587382}details[open]>.instructions{border-top:1px solid #d4dce1}details[open]>summary .plus{transform:rotate(45deg)}article:has(>details[open]){grid-column:1/-1}article>details[open]>summary{min-height:0}.instructions{padding:28px}.app{font:12px monospace;letter-spacing:1px;color:#66808e;margin-top:0}.app code{color:#203b4d;font-size:14px;letter-spacing:0;margin-left:10px;overflow-wrap:anywhere}.note{max-width:1000px;color:#4d6371;font-size:15px}.source,.permalink{font-size:14px;color:#235d47}h3{font-size:16px;margin:30px 0 10px}h3 span{font:12px monospace;color:#718694;margin-right:10px}.code{position:relative;background:#101e2b;color:#e0eaf1;border-radius:3px;overflow:hidden}pre{margin:0;padding:24px 72px 24px 20px;overflow-x:auto;font:14px/1.8 ui-monospace,SFMono-Regular,Consolas,monospace}code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace}.copy{position:absolute;right:10px;top:10px;background:#243849;color:#dceae5;border:1px solid #4e6677;border-radius:3px;padding:5px 9px;cursor:pointer;font:12px Arial}.copy:hover{background:#36536a}.upgrade{margin-top:15px}.upgrade summary{font-size:14px;text-decoration:underline;text-underline-offset:4px;margin-bottom:12px}.restart{font-size:14px;border-left:2px solid #96cbaa;padding-left:14px;margin-top:24px;color:#536c7b}footer{margin-top:56px;padding:28px 0;border-top:1px solid #ccd6dc;display:flex;justify-content:space-between;font-size:12px;color:#6a7e8b}footer span{letter-spacing:1px}footer b{margin:0 10px;font-weight:normal}footer p{margin:0;text-align:right}#status{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#163b2b;color:white;padding:8px 16px;border-radius:4px}#status:empty{display:none}:focus-visible{outline:3px solid #309a65;outline-offset:5px}@media(max-width:720px){header{padding:0 20px;height:72px}.brand span{display:none}main{padding:0 20px}.intro{padding:38px 0 30px}.intro aside{display:none}.lede br{display:none}.before{display:block;padding:18px}.label{display:block;margin-bottom:10px}.section-line>span{display:none}.grid{grid-template-columns:1fr}article>details>summary{padding:22px 18px;min-height:190px;gap:12px}.instructions{padding:20px 16px}pre{font-size:13px;padding-top:44px}h1{letter-spacing:-1.5px}footer{display:block}footer p{text-align:left;margin-top:12px}}@media print{header,.copy,#status{display:none}body{background:white}.grid{display:block}article{break-inside:avoid;margin-bottom:16px}.intro{padding:20px 0}.code{background:#eee;color:black}pre{white-space:pre-wrap}.instructions{display:block}}</style></head><body><header><a class="brand" href="#">JC<span>JAKAJA CAIN</span></a><nav aria-label="Source profiles"><a href="https://github.com/Redone0001">GitHub ↗</a><a href="https://gitlab.com/jakaja.cain/">GitLab ↗</a></nav></header><main><section class="intro"><div><p class="eyebrow">ALLIANCE AUTH / DEVELOPER FIELD GUIDE</p><h1>Alliance Auth modules.</h1><p class="lede">My Alliance Auth modules, adaptations and forks.<br>Install commands, settings and schedules, in one place.</p></div><aside><span class="big">13</span><span>MODULES & SERVICES</span><div class="stamp">INSTALL → CONFIGURE → RUN</div></aside></section><section class="before"><span class="label">BEFORE YOU START</span><p>Use your existing AA virtual environment and run management commands beside <code>manage.py</code>. Add each app once, preserve your existing schedules, and keep <code>modeltranslation</code> first when using the SDE. Share a single daily SDE update task across modules.</p><p>For containers, persist the Git requirement and rebuild web and worker images. Tags below follow the repository’s installation guide; replace branch names with a reviewed commit SHA for reproducible installs.</p></section><div class="section-line"><h2>The collection</h2><span>Open a card for the installation recipe</span></div><section class="grid" aria-label="Module installation cards"><article id="aa-sov-planner"><details><summary><span class="num">01</span><span class="summary"><span class="tags">GITHUB <b>Module</b></span><h2>Sovereignty Planner</h2><span class="desc">Plan upgrades, power budgets and workforce routes across nullsec.</span><span class="compat">AA 5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>aasov.apps.SovPlannerConfig</code></p><p class="note">Load the SDE before use (skip if already current). Create a project in admin. Grant aasov.view_project, then edit_plan and manage_plan as needed. Ownership tasks are queued on demand; the daily schedule updates the shared SDE.</p><a class="source" href="https://github.com/Redone0001/aa-sov-planner">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-sov-planner.git@v1.0.0&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS = [&quot;modeltranslation&quot;] + [
+    app for app in INSTALLED_APPS if app != &quot;modeltranslation&quot;
+]
+# Add these only if not already enabled.
+INSTALLED_APPS += [&quot;eve_sde&quot;, &quot;aasov.apps.SovPlannerConfig&quot;]
+
+
+CELERYBEAT_SCHEDULE[&quot;EVE SDE :: Check for SDE Updates&quot;] = {
+    &quot;task&quot;: &quot;eve_sde.tasks.check_for_sde_updates&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;0&quot;, hour=&quot;12&quot;),
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-sov-planner.git@v1.0.0&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py esde_load_sde
+# Optional: capture missing ownership snapshots
+python manage.py aasov_snapshot_owners</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#aa-sov-planner" class="permalink">Link to this module</a></div></details></article><article id="aa-contract-scanner"><details><summary><span class="num">02</span><span class="summary"><span class="tags">GITHUB <b>Module</b></span><h2>Contract Scanner</h2><span class="desc">Scan public contracts and find deals using Janice valuations.</span><span class="compat">AA 5.x · beta</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>contract_scanner</code></p><p class="note">Requires a Janice API key and AA’s ESI_USER_CONTACT_EMAIL. Grant “Can access AA Contract Scanner”; VIP alerts and price management have separate permissions. SDE load comes before the first scan. Optional Discord alerts require Discord Proxy and AA Discord services.</p><a class="source" href="https://github.com/Redone0001/aa-contract-scanner">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;django-eveonline-sde&gt;=0.2.0&quot;
+python -m pip install &quot;git+https://github.com/Redone0001/aa-contract-scanner.git@v1.0.0b4&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS = [&quot;modeltranslation&quot;] + [
+    app for app in INSTALLED_APPS if app != &quot;modeltranslation&quot;
+]
+# Add these only if not already enabled.
+INSTALLED_APPS += [&quot;eve_sde&quot;, &quot;contract_scanner&quot;]
+
+
+CELERYBEAT_SCHEDULE[&quot;eve_sde_check_for_updates&quot;] = {
+    &quot;task&quot;: &quot;eve_sde.tasks.check_for_sde_updates&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;0&quot;, hour=&quot;12&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;contract_scanner_scan_public_contracts_synchronously&quot;] = {
+    &quot;task&quot;: &quot;contract_scanner.tasks.scan_public_contracts_synchronously&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*/30&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;contract_scanner_refresh_valuations&quot;] = {
+    &quot;task&quot;: &quot;contract_scanner.tasks.refresh_all_contract_valuations&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;10&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;contract_scanner_analyze_history&quot;] = {
+    &quot;task&quot;: &quot;contract_scanner.tasks.analyze_contract_history&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;20,50&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;contract_scanner_purge_inactive_contracts&quot;] = {
+    &quot;task&quot;: &quot;contract_scanner.tasks.purge_inactive_contracts&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;15&quot;, hour=&quot;3&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;contract_scanner_resolve_structure_names&quot;] = {
+    &quot;task&quot;: &quot;contract_scanner.tasks.resolve_contract_structure_names&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;35&quot;, hour=&quot;*/3&quot;),
+}
+
+JANICE_API_KEY = &quot;your-Janice-key&quot;
+CONTRACT_SCANNER_DETAIL_BATCH_SIZE = 10</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade --upgrade &quot;django-eveonline-sde&gt;=0.2.0&quot;
+python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-contract-scanner.git@v1.0.0b4&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py esde_load_sde
+python manage.py scan_public_contracts --details
+python manage.py contract_scan_status</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#aa-contract-scanner" class="permalink">Link to this module</a></div></details></article><article id="aa-incursion-page"><details><summary><span class="num">03</span><span class="summary"><span class="tags">GITHUB <b>Module</b></span><h2>Incursion Status</h2><span class="desc">Follow active incursions, phase changes and optional Discord alerts.</span><span class="compat">AA 5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>incursionstatus</code></p><p class="note">Requires django-eveonline-sde 0.2.x and django-esi 9.4–9.x. Grant incursionstatus.incursion_view. Optional Discord: install the [discord] extra, run a proxy, add the every-minute incursionstatus.deliver_notifications task and configure Notification rules; see README.</p><a class="source" href="https://github.com/Redone0001/aa-incursion-page">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-incursion-page.git@main&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS = [&quot;modeltranslation&quot;] + [
+    app for app in INSTALLED_APPS if app != &quot;modeltranslation&quot;
+]
+# Add these only if not already enabled.
+INSTALLED_APPS += [&quot;eve_sde&quot;, &quot;incursionstatus&quot;]
+
+CELERYBEAT_SCHEDULE[&quot;eve_sde_check_for_updates&quot;] = {
+    &quot;task&quot;: &quot;eve_sde.tasks.check_for_sde_updates&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;0&quot;, hour=&quot;12&quot;),
+}
+
+
+CELERYBEAT_SCHEDULE[&quot;incursionstatus_update_incursions&quot;] = {
+    &quot;task&quot;: &quot;incursionstatus.update_incursions&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*/5&quot;),
+    &quot;apply_offset&quot;: True,
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-incursion-page.git@main&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py esde_load_sde
+python manage.py shell -c &quot;from incursionstatus.tasks import update_incursions; update_incursions.delay()&quot;</code></pre></div><details class="upgrade"><summary>Optional Discord notifications</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># Optional Discord support in the AA environment:
+python -m pip install &quot;aa-incursion-status[discord] @ git+https://github.com/Redone0001/aa-incursion-page.git@main&quot;
+python manage.py migrate</code></pre></div><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># Optional: add to local.py after the core setup above.
+INCURSIONSTATUS_DISCORD_PROXY_TARGET = &quot;localhost:50051&quot;
+CELERYBEAT_SCHEDULE[&quot;incursionstatus_deliver_notifications&quot;] = {
+    &quot;task&quot;: &quot;incursionstatus.deliver_notifications&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*&quot;),
+}</code></pre></div><p>Run Discord Proxy, grant the bot Send Messages and Embed Links, then create Notification rules in Django admin. Restart workers and Beat.</p></details><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#aa-incursion-page" class="permalink">Link to this module</a></div></details></article><article id="aa-killpusher"><details><summary><span class="num">04</span><span class="summary"><span class="tags">GITHUB <b>Module</b></span><h2>Killmail Pusher</h2><span class="desc">Import character killmails and deliberately publish them to zKillboard.</span><span class="compat">AA 5.4</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>killpusher.apps.KillpusherConfig</code></p><p class="note">Requires an existing loaded eve_sde setup with modeltranslation. Add esi-killmails.read_killmails.v1 to the EVE application’s allowed scopes. Grant killpusher.basic_access and connect a character. Imports never automatically publish killmails.</p><a class="source" href="https://github.com/Redone0001/aa-killpusher">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-killpusher.git@v0.1.5&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS += [&quot;killpusher.apps.KillpusherConfig&quot;]
+
+CELERYBEAT_SCHEDULE[&quot;Killmail Pusher :: Import and cleanup&quot;] = {
+    &quot;task&quot;: &quot;killpusher.tasks.poll_killmails&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*/5&quot;),
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-killpusher.git@v0.1.5&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># If the existing SDE is not loaded:
+python manage.py esde_load_sde</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#aa-killpusher" class="permalink">Link to this module</a></div></details></article><article id="passive-fleet-monitor"><details><summary><span class="num">05</span><span class="summary"><span class="tags">GITLAB <b>Module</b></span><h2>Passive Fleet Monitor</h2><span class="desc">A work-in-progress foundation for tracking fleet membership over time.</span><span class="compat">AA 5+ · unfinished</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>passive_fleet_monitor</code></p><p class="note">README explicitly marks ESI polling, registration and token handling as unfinished. Grant passive_fleet_monitor.basic_access. This is a development scaffold, not an operational fleet monitor.</p><a class="source" href="https://gitlab.com/jakaja.cain/passive-fleet-monitor">Repository & full documentation ↗</a><h3><span>01</span> Install from GitLab</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://gitlab.com/jakaja.cain/passive-fleet-monitor.git@main&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>INSTALLED_APPS += [&quot;passive_fleet_monitor&quot;]
+
+# No working ESI polling schedule yet.
+# The Celery polling task is a placeholder.</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://gitlab.com/jakaja.cain/passive-fleet-monitor.git@main&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><p>No additional management command documented. Complete the configuration and permissions noted above.</p><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with main</summary><div><ul><li><a href="https://gitlab.com/jakaja.cain/passive-fleet-monitor/-/tree/initial-module-dev">initial-module-dev</a> — 3 commits ahead, no commits behind</li></ul><p>The installation recipe above uses main. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#passive-fleet-monitor" class="permalink">Link to this module</a></div></details></article><article id="aa-markettracker-plugin"><details><summary><span class="num">06</span><span class="summary"><span class="tags">GITHUB <b>Adaptation</b></span><h2>MarketTracker</h2><span class="desc">Track market stock, item groups, contracts and restock alerts.</span><span class="compat">AA 5.x · Python 3.10–3.14</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>markettracker</code></p><p class="note">The AA 5 upgrade is merged: main and aa5-upgrade point to the same commit. Install from main. Requires AA &gt;=5,&lt;6, Django &gt;=5.2,&lt;6, django-esi &gt;=9.4,&lt;10, Celery &gt;=5.5,&lt;6, django-celery-beat &gt;=2.8, django-eveonline-sde &gt;=0.1,&lt;1, django-eveuniverse &gt;=2,&lt;3 and fittings &gt;=2.3.2,&lt;3. Dependencies are declared in package metadata. Both refresh tasks run every 30 minutes. Grant markettracker.basic_access and can_manage_stocks; can_manage_deliveries and can_move_tracked_items are optional roles. Link a market character and configure tracked locations and stock. When upgrading from AA 4, upgrade Auth to AA 5 first. For upgrades from MarketTracker 1.4.0, rotate previously configured Discord webhooks and address external logs that may contain their old URLs, as documented in the README.</p><a class="source" href="https://github.com/Redone0001/aa-markettracker-plugin">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-markettracker-plugin.git@main&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># Keep modeltranslation first; enable each app only once.
+INSTALLED_APPS = [&quot;modeltranslation&quot;] + [
+    app for app in INSTALLED_APPS if app != &quot;modeltranslation&quot;
+]
+for app in [&quot;eve_sde&quot;, &quot;fittings&quot;, &quot;eveuniverse&quot;, &quot;markettracker&quot;]:
+    if app not in INSTALLED_APPS:
+        INSTALLED_APPS.append(app)
+
+from celery.schedules import crontab
+
+CELERYBEAT_SCHEDULE[&quot;refresh_market_data&quot;] = {
+    &quot;task&quot;: &quot;markettracker.tasks.fetch_market_data_auto&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*/30&quot;),
+}
+
+CELERYBEAT_SCHEDULE[&quot;markettracker_fetch_contracts&quot;] = {
+    &quot;task&quot;: &quot;markettracker.tasks.refresh_contracts&quot;,
+    &quot;schedule&quot;: crontab(minute=&quot;*/30&quot;),
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-markettracker-plugin.git@main&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check
+python -m pip check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># If the shared SDE is not already loaded:
+python manage.py esde_load_sde
+
+# Confirm that the AA environment satisfies package requirements:
+python -m pip check</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with main</summary><div>main and aa5-upgrade are identical at commit <code>2110a824ad12</code>. The README still names aa5-upgrade in its beta install example; the command above uses the merged main branch.</div></details><a href="#aa-markettracker-plugin" class="permalink">Link to this module</a></div></details></article><article id="allianceauth-yafat"><details><summary><span class="num">07</span><span class="summary"><span class="tags">GITHUB <b>Fork</b></span><h2>AFAT / YAFAT</h2><span class="desc">Fleet attendance tracking with ESI links and automatic detection.</span><span class="compat">AA 5.2–5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>afat</code></p><p class="note">Fork of allianceauth-afat. Package metadata requires AA &gt;=5.2,&lt;6, overriding older README wording. Grant afat.basic_access and FC/manager permissions as needed. ESDE_TASK_SPLIT applies to bare metal or nonstandard Docker storage. README mentions redis-cli flushall on update; it clears every Redis database and is deliberately excluded from routine copyable commands.</p><a class="source" href="https://github.com/Redone0001/allianceauth-yafat">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/allianceauth-yafat.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS = [&quot;modeltranslation&quot;] + [
+    app for app in INSTALLED_APPS if app != &quot;modeltranslation&quot;
+]
+# Add these only if not already enabled.
+INSTALLED_APPS += [&quot;eve_sde&quot;, &quot;afat&quot;]
+
+# AFAT - https://github.com/Redone0001/allianceauth-yafat
+if &quot;afat&quot; in INSTALLED_APPS:
+    CELERYBEAT_SCHEDULE[&quot;afat_update_esi_fatlinks&quot;] = {
+        &quot;task&quot;: &quot;afat.tasks.update_esi_fatlinks&quot;,
+        &quot;schedule&quot;: crontab(minute=&quot;*/1&quot;),
+    }
+
+    CELERYBEAT_SCHEDULE[&quot;afat_auto_detect_esi_fatlinks&quot;] = {
+        &quot;task&quot;: &quot;afat.tasks.auto_detect_esi_fatlinks&quot;,
+        &quot;schedule&quot;: crontab(minute=&quot;*/1&quot;),
+    }
+
+    CELERYBEAT_SCHEDULE[&quot;afat_logrotate&quot;] = {
+        &quot;task&quot;: &quot;afat.tasks.logrotate&quot;,
+        &quot;schedule&quot;: crontab(minute=&quot;0&quot;, hour=&quot;1&quot;),
+    }
+
+if &quot;eve_sde&quot; in INSTALLED_APPS:
+    # Run at 12:00 each day
+    CELERYBEAT_SCHEDULE[&quot;EVE SDE :: Check for SDE Updates&quot;] = {
+        &quot;task&quot;: &quot;eve_sde.tasks.check_for_sde_updates&quot;,
+        &quot;schedule&quot;: crontab(minute=&quot;0&quot;, hour=&quot;12&quot;),
+    }
+
+    # Set the following when you have a bare metal installation, or Docker with a
+    # non-standard storage for `myauth`
+    ESDE_TASK_SPLIT = True</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/allianceauth-yafat.git@master&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py esde_load_sde
+# Optional, only when migrating native AA FAT data:
+python manage.py afat_import_from_allianceauth_fat</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#allianceauth-yafat" class="permalink">Link to this module</a></div></details></article><article id="allianceauth-corp-tools"><details><summary><span class="num">08</span><span class="summary"><span class="tags">GITHUB <b>Fork</b></span><h2>CorpTools</h2><span class="desc">Character and corporation audits, assets, skills and wallets.</span><span class="compat">AA 4.6.1–5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>corptools</code></p><p class="note">Requires django-esi &gt;=9.6 and django-eveonline-sde; follow their setup requirements. Run ct_setup after migrations, then Audit Admin → Create or Update Periodic Tasks. Default character batches run at :15/:45 and corporation updates at :30. Grant corptools.view_characteraudit and appropriate corporation roles, then add tokens.</p><a class="source" href="https://github.com/Redone0001/allianceauth-corp-tools">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/allianceauth-corp-tools.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>INSTALLED_APPS += [&quot;corptools&quot;]
+
+# Periodic tasks are managed in the database, not local.py.
+# Audit Admin → Create or Update Periodic Tasks</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/allianceauth-corp-tools.git@master&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py ct_setup</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with master</summary><div><ul><li><a href="https://github.com/Redone0001/allianceauth-corp-tools/tree/jakaja_improvement">jakaja_improvement</a> — 63 commits ahead, no commits behind</li></ul><p>The installation recipe above uses master. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#allianceauth-corp-tools" class="permalink">Link to this module</a></div></details></article><article id="allianceauth-buyback-program"><details><summary><span class="num">09</span><span class="summary"><span class="tags">GITLAB <b>Fork / derivative</b></span><h2>Buyback Program</h2><span class="desc">Buyback pricing, contract tracking and reverse buyback stock.</span><span class="compat">AA 4.6–5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>buybackprogram</code></p><p class="note">Derived from paulipa’s Buyback Program. Requires django-eveuniverse. Add ESI scopes: esi-contracts.read_character_contracts.v1, esi-contracts.read_corporation_contracts.v1, esi-universe.read_structures.v1, esi-wallet.read_corporation_wallets.v1, esi-corporations.read_divisions.v1 and esi-assets.read_corporation_assets.v1. Grant buybackprogram.basic_access and manager permissions. Finish data loading before configuring programs.</p><a class="source" href="https://gitlab.com/jakaja.cain/allianceauth-buyback-program">Repository & full documentation ↗</a><h3><span>01</span> Install from GitLab</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://gitlab.com/jakaja.cain/allianceauth-buyback-program.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS += [&quot;eveuniverse&quot;, &quot;buybackprogram&quot;]
+
+
+# Buybackprogram price updates, updates prices at midnight
+CELERYBEAT_SCHEDULE[&#x27;buybackprogram_update_all_prices&#x27;] = {
+    &#x27;task&#x27;: &#x27;buybackprogram.tasks.update_all_prices&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=0, hour=&#x27;0&#x27;),
+}
+
+# Buybackprogram contract updates, updates contracts every 30 minutes
+CELERYBEAT_SCHEDULE[&#x27;buybackprogram_update_all_contracts&#x27;] = {
+    &#x27;task&#x27;: &#x27;buybackprogram.tasks.update_all_contracts&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=&#x27;*/30&#x27;),
+}
+
+# Buybackprogram program performance updates, updates performance at midnight
+CELERYBEAT_SCHEDULE[&#x27;buybackprogram_update_program_performance&#x27;] = {
+    &#x27;task&#x27;: &#x27;buybackprogram.tasks.update_program_performance&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=0, hour=&#x27;0&#x27;),
+}
+
+# Buybackprogram wallet sync, updates wallet balances and names every hour
+CELERYBEAT_SCHEDULE[&#x27;buybackprogram_update_all_wallets&#x27;] = {
+    &#x27;task&#x27;: &#x27;buybackprogram.update_all_wallets&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=0),
+}
+# Buybackprogram hangar stock sync, updates reverse buyback stock every 30 minutes
+CELERYBEAT_SCHEDULE[&#x27;buybackprogram_update_all_hangars&#x27;] = {
+    &#x27;task&#x27;: &#x27;buybackprogram.tasks.update_all_hangars&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=&#x27;*/30&#x27;),
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://gitlab.com/jakaja.cain/allianceauth-buyback-program.git@master&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py buybackprogram_load_data
+# Wait for type loading to finish; optional price preload:
+python manage.py buybackprogram_load_prices</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with master</summary><div><ul><li><a href="https://gitlab.com/jakaja.cain/allianceauth-buyback-program/-/tree/allianceauth-buyback-program-bug-janice-empty">allianceauth-buyback-program-bug-janice-empty</a> — 1 commits ahead, 224 behind (diverged)</li><li><a href="https://gitlab.com/jakaja.cain/allianceauth-buyback-program/-/tree/ore-refined-value">ore-refined-value</a> — 20 commits ahead, no commits behind</li></ul><p>The installation recipe above uses master. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#allianceauth-buyback-program" class="permalink">Link to this module</a></div></details></article><article id="aa-freight"><details><summary><span class="num">10</span><span class="summary"><span class="tags">GITLAB <b>Fork / derivative</b></span><h2>Freight</h2><span class="desc">Courier rewards, route pricing and contract tracking for haulers.</span><span class="compat">AA 4–5.x</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>freight</code></p><p class="note">Derived from Erik Kalkoken’s Freight. Add esi-universe.read_structures.v1 and esi-contracts.read_corporation_contracts.v1 to the EVE application. Grant freight.basic_access plus calculator, contracts and handler permissions as appropriate. Set Contract Handler in the app and create a pricing route in admin. Optional Discord direct messages need Discord Proxy and FREIGHT_DISCORDPROXY_ENABLED = True.</p><a class="source" href="https://gitlab.com/jakaja.cain/aa-freight">Repository & full documentation ↗</a><h3><span>01</span> Install from GitLab</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://gitlab.com/jakaja.cain/aa-freight.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>INSTALLED_APPS += [&quot;freight&quot;]
+
+CELERYBEAT_SCHEDULE[&quot;freight_run_contracts_sync&quot;] = {
+    &quot;task&quot;: &quot;freight.tasks.run_contracts_sync&quot;,
+    &quot;schedule&quot;: 600,
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://gitlab.com/jakaja.cain/aa-freight.git@master&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><p>No additional management command documented. Complete the configuration and permissions noted above.</p><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with master</summary><div><ul><li><a href="https://gitlab.com/jakaja.cain/aa-freight/-/tree/Jakaja_Cain_Changes">Jakaja_Cain_Changes</a> — 36 commits ahead, no commits behind</li></ul><p>The installation recipe above uses master. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#aa-freight" class="permalink">Link to this module</a></div></details></article><article id="aa-structuretimers"><details><summary><span class="num">11</span><span class="summary"><span class="tags">GITHUB <b>Fork</b></span><h2>Structure Timers II</h2><span class="desc">Structure and moon timers with scheduled Discord notifications.</span><span class="compat">See repository requirements</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>structuretimers</code></p><p class="note">Requires django-eveuniverse. Skip data preloads if already completed. Grant access/create/edit permissions and configure notification rules in admin. Optional migration imports the classic AA timers.</p><a class="source" href="https://github.com/Redone0001/aa-structuretimers">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-structuretimers.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>from celery.schedules import crontab
+
+INSTALLED_APPS += [&quot;eveuniverse&quot;, &quot;structuretimers&quot;]
+
+
+CELERYBEAT_SCHEDULE[&#x27;structuretimers_housekeeping&#x27;] = {
+    &#x27;task&#x27;: &#x27;structuretimers.tasks.housekeeping&#x27;,
+    &#x27;schedule&#x27;: crontab(minute=0, hour=3),
+}</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-structuretimers.git@master&quot;
+python manage.py migrate
+python manage.py collectstatic --noinput
+python manage.py check</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py eveuniverse_load_data map
+python manage.py structuretimers_load_eve
+# Optional, before setting notification rules:
+python manage.py structuretimers_migrate_timers</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with master</summary><div><ul><li><a href="https://github.com/Redone0001/aa-structuretimers/tree/jakaja_improvement">jakaja_improvement</a> — 42 commits ahead, no commits behind</li></ul><p>The installation recipe above uses master. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#aa-structuretimers" class="permalink">Link to this module</a></div></details></article><article id="aa-discordnotify"><details><summary><span class="num">12</span><span class="summary"><span class="tags">GITHUB <b>Fork</b></span><h2>Discord Notify</h2><span class="desc">Forward Alliance Auth notifications to members on Discord.</span><span class="compat">See repository requirements</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>discordnotify</code></p><p class="note">Requires a running Discord Proxy and AA’s configured Discord service. README says no migrations are required. Restart AA services and workers. Visit /discordnotify/test while logged in to send yourself a test notification.</p><a class="source" href="https://github.com/Redone0001/aa-discordnotify">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/aa-discordnotify.git@master&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>INSTALLED_APPS += [&quot;discordnotify&quot;]
+
+# No periodic Celery Beat entry required.
+# For Docker, use your proxy container hostname:
+# DISCORDPROXY_HOST = &quot;allianceauth_discordproxy&quot;</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python manage.py collectstatic --noinput</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/aa-discordnotify.git@master&quot;
+python manage.py collectstatic --noinput</code></pre></div></details><h3><span>04</span> Extra setup</h3><p>No additional management command documented. Complete the configuration and permissions noted above.</p><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><details class="upgrade branch-audit"><summary>Branch check · compared with master</summary><div><ul><li><a href="https://github.com/Redone0001/aa-discordnotify/tree/discord-multiverse-integration">discord-multiverse-integration</a> — 1 commits ahead, no commits behind</li></ul><p>The installation recipe above uses master. These branches contain additional work; their production readiness and branch-specific installation changes have not been verified.</p></div></details><a href="#aa-discordnotify" class="permalink">Link to this module</a></div></details></article><article id="discordproxy"><details><summary><span class="num">13</span><span class="summary"><span class="tags">GITHUB <b>Extended service</b></span><h2>Discord Proxy</h2><span class="desc">Shared Discord service with persistent timerboard message support.</span><span class="compat">Python 3.10+</span></span><span class="plus" aria-hidden="true">+</span></summary><div class="instructions"><p class="app">APP <code>Not a Django app</code></p><p class="note">Extension of AllianceAuth-Apps/discordproxy. Upgrade the proxy server first, then install the same revision in every consumer environment and restart workers. No Django migrations or collectstatic for the standalone server. Use a supervisor for persistent operation.</p><a class="source" href="https://github.com/Redone0001/discordproxy">Repository & full documentation ↗</a><h3><span>01</span> Install from GitHub</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install &quot;git+https://github.com/Redone0001/discordproxy.git@main&quot;</code></pre></div><h3><span>02</span> local.py · apps, then Celery</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># No INSTALLED_APPS entry.
+# No Celery Beat schedule.
+# Configure consumers to reach this proxy.</code></pre></div><h3><span>03</span> Database & static files</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip check
+discordproxyserver --version</code></pre></div><details class="upgrade"><summary>Upgrading an existing installation</summary><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code>python -m pip install --upgrade &quot;git+https://github.com/Redone0001/discordproxy.git@main&quot;
+python -m pip check
+discordproxyserver --version</code></pre></div></details><h3><span>04</span> Extra setup</h3><div class="code"><button class="copy" type="button" aria-label="Copy code">Copy</button><pre><code># New server only; set DISCORD_BOT_TOKEN securely first.
+discordproxyserver --host 127.0.0.1 --port 50051</code></pre></div><p class="restart">Restart AA web services and Celery workers after installation; restart Beat after changing schedules. Use your deployment’s service names.</p><a href="#discordproxy" class="permalink">Link to this module</a></div></details></article></section><footer><span>JAKAJA CAIN <b>/</b> Redone0001</span><p>Source snapshot · 28 September 2026<br>Recipes reviewed against public READMEs and selected source files; not installed against a live AA instance.</p></footer></main><div id="status" role="status" aria-live="polite"></div><script>function openAnchor(){const id=decodeURIComponent(location.hash.slice(1));const card=document.getElementById(id);if(card?.matches('article')){card.querySelector('details').open=true;requestAnimationFrame(()=>card.scrollIntoView());}}window.addEventListener('hashchange',openAnchor);openAnchor();document.querySelectorAll('.copy').forEach(button=>button.addEventListener('click',async()=>{const text=button.parentElement.querySelector('code').textContent;try{await navigator.clipboard.writeText(text);button.textContent='Copied';document.getElementById('status').textContent='Code copied';setTimeout(()=>{button.textContent='Copy';document.getElementById('status').textContent='';},1600);}catch{const selection=window.getSelection();const range=document.createRange();range.selectNodeContents(button.parentElement.querySelector('code'));selection.removeAllRanges();selection.addRange(range);document.getElementById('status').textContent='Select and copy the highlighted code.';}}));</script></body></html>
