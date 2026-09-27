@@ -14,6 +14,6 @@ Open `index.html` directly in a browser for a local preview. Copy buttons fall b
 
 ## Documentation scope
 
-13 modules and services. Repository documentation and branch ancestry were reviewed on 28 September 2026. Installation commands have not been tested against a live Alliance Auth instance. Branches ahead of the default are not automatically considered production-ready. Follow each card’s source link for current documentation.
+11 modules and services. Repository documentation and branch ancestry were reviewed on 28 September 2026. Installation commands have not been tested against a live Alliance Auth instance. Branches ahead of the default are not automatically considered production-ready. Follow each card’s source link for current documentation.
 
 EVE Online and Alliance Auth belong to their respective owners. Linked projects retain their own licenses and attribution.
